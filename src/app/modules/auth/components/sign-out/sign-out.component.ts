@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class SignOutComponent {
 
-  constructor(private auth: FirebaseService, private router: Router) { }
+  constructor(private auth: FirebaseService) { }
 
   async signOut() {
     
