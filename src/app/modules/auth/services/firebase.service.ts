@@ -1,7 +1,8 @@
-import { inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { AngularFireAuth } from "@angular/fire/compat/auth";
-import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { __awaiter } from 'tslib';
+import { Router } from '@angular/router';
+import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
+
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class FirebaseService {
 
   userInfo !: any 
 
-  constructor(private afAuth: AngularFireAuth) { }
+  constructor(private afAuth: AngularFireAuth, private router: Router) { }
 
   getCurrenUser() {
     return this.afAuth.authState;
@@ -58,6 +59,21 @@ export class FirebaseService {
     } catch (error) {
       console.log(error);
       return false
+    }
+  }
+
+  signOut() {
+    try {
+      const auth = getAuth();
+      signOut(auth).then(() => {
+        console.log('Se cerro sesión.');
+        this.router.navigate(['/']);
+      }).catch((error) => {
+        console.log(error);
+        
+      });
+    } catch (error) {
+      
     }
   }
 
