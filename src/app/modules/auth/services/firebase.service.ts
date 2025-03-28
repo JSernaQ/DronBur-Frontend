@@ -1,38 +1,40 @@
-import { inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { AngularFireAuth } from "@angular/fire/compat/auth";
-import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { __awaiter } from 'tslib';
+import { Router } from '@angular/router';
+import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, deleteUser } from "firebase/auth";
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirebaseService {
 
-  userInfo !: any 
+  userInfo !: any
 
-  constructor(private afAuth: AngularFireAuth) { }
+  constructor(private afAuth: AngularFireAuth, private router: Router) { }
 
   getCurrenUser() {
     return this.afAuth.authState;
   }
 
-  async register(email: string, password: string) {
-    if (!email || !password) {
-      console.error('Error: Email o contraseña vacíos');
-      return;
+    async register(email: string, password: string) {
+      if (!email || !password) {
+        console.error('Error: Email o contraseña vacíos');
+        return;
+      }
+
+      try {
+
+        const userCredential = await this.afAuth.createUserWithEmailAndPassword(email, password);
+
+
+        return userCredential;
+
+      } catch (error) {
+        console.error('Error al registrar usuario:', error);
+        return false
+      }
     }
-
-    try {
-
-      const userCredential = await this.afAuth.createUserWithEmailAndPassword(email, password);
-      console.log('Usuario registrado:', userCredential.user);
-      return userCredential;
-
-    } catch (error) {
-      console.error('Error al registrar usuario:', error);
-      return false
-    }
-  }
 
 
   async login(email: string, password: string) {
@@ -46,7 +48,13 @@ export class FirebaseService {
     }
 
   }
+  
+  // async deleteUser(user: any) {
+  
+  //   deleteUser(user)
 
+  // }
+  
   async signInGoogle() {
     try {
       const auth = getAuth();
@@ -58,6 +66,21 @@ export class FirebaseService {
     } catch (error) {
       console.log(error);
       return false
+    }
+  }
+
+  signOut() {
+    try {
+      const auth = getAuth();
+      signOut(auth).then(() => {
+        console.log('Se cerro sesión.');
+        this.router.navigate(['/']);
+      }).catch((error) => {
+        console.log(error);
+        
+      });
+    } catch (error) {
+      
     }
   }
 
