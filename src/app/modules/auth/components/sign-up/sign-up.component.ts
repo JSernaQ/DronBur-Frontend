@@ -41,7 +41,7 @@ export class SignUpComponent {
           userActived.subscribe(
             (data) => {
               if ((data as any).ok) {
-                this.router.navigate(['main/tabs/tab1']);
+                this.router.navigate(['main/tabs/chats']);
               }
               //else{
               //   // const user = this.auth.getCurrenUser()
@@ -70,7 +70,7 @@ export class SignUpComponent {
     const userCredentials = await this.auth.signInGoogle();
 
     if (userCredentials) {
-      this.router.navigate(['main/tabs/tab1'])
+      this.router.navigate(['main/tabs/chats'])
     }
 
   };

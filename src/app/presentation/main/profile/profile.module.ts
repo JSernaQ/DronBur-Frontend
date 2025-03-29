@@ -1,23 +1,24 @@
-import { IonicModule } from '@ionic/angular';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Tab1Page } from './tab1.page';
 
-import { Tab1PageRoutingModule } from './tab1-routing.module';
+import { IonicModule } from '@ionic/angular';
 
+import { ProfilePageRoutingModule } from './profile-routing.module';
+
+import { ProfilePage } from './profile.page';
 import { SignOutComponent } from 'src/app/modules/auth/components/sign-out/sign-out.component';
 
 @NgModule({
   imports: [
-    IonicModule,
     CommonModule,
     FormsModule,
-    Tab1PageRoutingModule
+    IonicModule,
+    ProfilePageRoutingModule
   ],
   declarations: [
-    Tab1Page,
+    ProfilePage,
     SignOutComponent
   ]
 })
-export class Tab1PageModule {}
+export class ProfilePageModule {}

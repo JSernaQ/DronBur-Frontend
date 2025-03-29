@@ -1,0 +1,54 @@
+.div-profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+}
+
+.profile-img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-img ion-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.follow-buttom {
+    background-color: rgb(55, 88, 255);
+    padding: 10px;
+    border: 0cap solid;
+    border-radius: 6%;
+}
+
+.center-content {
+    display: flex;
+    justify-content: center;
+    min-width: 100%;
+}
+
+.image-container {
+    width: 100%;
+    padding-top: 100%;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.image-container ion-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

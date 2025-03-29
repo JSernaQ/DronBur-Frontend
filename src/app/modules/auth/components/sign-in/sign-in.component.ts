@@ -21,7 +21,7 @@ export class SignInComponent {
     const userCredentials = await this.auth.login(this.email, this.password)
         
     if (userCredentials) {
-      this.router.navigate(['main/tabs/tab1'])
+      this.router.navigate(['main/tabs/chats'])
     }
 
   };
@@ -31,7 +31,7 @@ export class SignInComponent {
     const userCredentials = await this.auth.signInGoogle();
     
     if (userCredentials) {
-      this.router.navigate(['main/tabs/tab1'])
+      this.router.navigate(['main/tabs/chats'])
     }
 
   };
