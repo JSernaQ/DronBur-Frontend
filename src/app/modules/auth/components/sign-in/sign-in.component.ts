@@ -37,7 +37,7 @@ export class SignInComponent {
   };
 
   getCurrenUser() {
-    const user = this.auth.getCurrenUser().subscribe()
+    const user = this.auth.getCurrentUser().subscribe()
     console.log(user);
     
     return user 

@@ -4,46 +4,17 @@
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true">
-  <!-- <ion-grid>
-    <ion-row>
-      <ion-col size="3">
-        <div class="profile-img">
-          <ion-img [src]="user?.img"></ion-img>
-        </div>
-
-      </ion-col>
-      <ion-col size="8">
-        <ion-grid>
-          <ion-row>
-            <ion-col size="12" ><strong>Juan David Serna</strong></ion-col>
-            <ion-col style="color: lightgray;" size="12" >{{user?.username}}</ion-col>
-            <ion-col size="12" >10 Seguidores</ion-col>
-            
-          </ion-row>
-        </ion-grid>
-        
-        
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col style="display: flex; justify-content:center; gap: 10px;" size="12">
-        <button class="follow-buttom">FOLLOW</button>
-        <button class="follow-buttom">MENSAJE</button>
-      </ion-col>
-    </ion-row>
-  </ion-grid> -->
-  <div style="background-color: rgb(12, 12, 27); padding: 5px; border-radius: 0 0 20px 20px;">
-
+ <div>
     <ion-grid>
       <ion-row class="center-content">
-        <div class="profile-img">
-          <ion-img class="ima" [src]="user?.img"></ion-img>
+        <div class="div-profile-img">
+          <ion-img class="pp-img" [src]="user?.img"></ion-img>
         </div>
       </ion-row>
 
       <ion-row style="padding-top: 5px;">
         <ion-col class="center-content" size="12"><strong>Juan David Serna</strong></ion-col>
-        <ion-col class="center-content" style="color: rgb(180, 180, 180);" size="12">&#64;{{user?.username}}</ion-col>
+        <ion-col class="center-content" style="color: gray;" size="12">&#64;{{user?.username}}</ion-col>
       </ion-row>
       <div style="margin-top: 5px;">
         <ion-row>
@@ -80,6 +51,7 @@
             
             <ion-row style="width: 100%; text-align: center; display: block;">
               <ion-col size="12" style="color: gray;">Momentos</ion-col>
+              <ion-col size="12" style="color: gray;">{{user?.uid}}</ion-col>
             </ion-row>
             
           </ion-col>

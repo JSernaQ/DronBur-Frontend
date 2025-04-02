@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { l } from '@angular/core/navigation_types.d-u4EOrrdZ';
+import { Component, OnDestroy, OnInit, } from '@angular/core';
 import { firstValueFrom, Subscription } from 'rxjs';
 import { ApiService } from 'src/app/core/services/api.service';
 import { FirebaseService } from 'src/app/modules/auth/services/firebase.service';
@@ -10,32 +9,37 @@ import { FirebaseService } from 'src/app/modules/auth/services/firebase.service'
   styleUrls: ['./profile.page.scss'],
   standalone: false
 })
-export class ProfilePage implements OnInit {
+export class ProfilePage implements OnInit, OnDestroy {
 
   user !: any;
+  userSubscrition !: Subscription;
 
   constructor(private afAuth: FirebaseService, private apiServe: ApiService) { }
 
   ngOnInit() {
-    this.getUser()
+    this.userSubscrition = this.afAuth.getCurrentUser().subscribe(user => {
+      if (user) {
+        this.getUser(user?.uid)
+      }else {
+        this.user = null
+      }
+    })
   }
 
-  async getUser() {
+  ngOnDestroy(): void {
+    if (this.userSubscrition) {
+      this.userSubscrition.unsubscribe();
+    }
+  }
+
+  async getUser(uid: String) {
     try {
-      const user = await firstValueFrom(this.afAuth.getCurrenUser());
-  
-      if (!user) {
-        console.warn('No se encontró un usuario autenticado.');
-        return;
-      }
-  
-        this.user = await this.apiServe.getUser(user.uid);
-        console.log('Usuario obtenido:', this.user);
-      
+      this.user = await this.apiServe.getUser(uid);
+      console.log('Usuario obtenido:', this.user);
+
     } catch (error) {
       console.error('Error al obtener el usuario:', error);
     }
   }
   
-
 }

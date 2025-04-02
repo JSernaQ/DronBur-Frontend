@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from '../../services/firebase.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'component-sign-out',
@@ -14,7 +13,12 @@ export class SignOutComponent {
 
   async signOut() {
     
-    this.auth.signOut();
+    try {
+      await this.auth.signOut();
+      console.log('Se cerro la sesión con exito');
+    } catch (error) {
+      console.error('Error al cerrar sesión:', error);
+    }
 
   };
   

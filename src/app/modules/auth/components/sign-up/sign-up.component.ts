@@ -76,7 +76,7 @@ export class SignUpComponent {
   };
 
   getCurrenUser() {
-    const user = this.auth.getCurrenUser().subscribe()
+    const user = this.auth.getCurrentUser().subscribe()
     return user
   }
 
