@@ -11,7 +11,7 @@ import { provideHttpClient } from '@angular/common/http';
 //Firebase
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
-import { environments } from '../environments/environments';
+import { environments } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent],

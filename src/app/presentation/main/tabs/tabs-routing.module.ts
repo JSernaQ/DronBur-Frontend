@@ -9,16 +9,20 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
-        loadChildren: () => import('../tab1/tab1.module').then(m => m.Tab1PageModule), canActivate: [authGuard]
+        path: 'chats',
+        loadChildren: () => import('../chats/chats.module').then(m => m.ChatsPageModule), canActivate: [authGuard]
       },
       {
-        path: 'tab2',
-        loadChildren: () => import('../tab2/tab2.module').then(m => m.Tab2PageModule), canActivate: [authGuard]
+        path: 'feed',
+        loadChildren: () => import('../feed/feed.module').then(m => m.FeedPageModule), canActivate: [authGuard]
       },
       {
-        path: 'tab3',
-        loadChildren: () => import('../tab3/tab3.module').then(m => m.Tab3PageModule), canActivate: [authGuard]
+        path: 'moments',
+        loadChildren: () => import('../moments/moments.module').then(m => m.MomentsPageModule), canActivate: [authGuard]
+      },
+      {
+        path: 'profile',
+        loadChildren: () => import('../profile/profile.module').then(m => m.ProfilePageModule), canActivate: [authGuard]
       },
       {
         path: '',

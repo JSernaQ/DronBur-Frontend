@@ -11,7 +11,7 @@ export const userActiveGuard: CanActivateFn = (route, state) => {
   return afAuth.authState.pipe(
     map(user => {
       if (user) {
-        router.navigate(['/main/tabs/tab1']);
+        router.navigate(['/main/tabs/chats']);
         return false;
       } else {
         return true;

@@ -1,0 +1,94 @@
+<ion-header collapse="condense">
+  <ion-toolbar>
+    <ion-title size="large">Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+ <div>
+    <ion-grid>
+      <ion-row class="center-content">
+        <div class="div-profile-img">
+          <ion-img class="pp-img" [src]="user?.img"></ion-img>
+        </div>
+      </ion-row>
+
+      <ion-row style="padding-top: 5px;">
+        <ion-col class="center-content" size="12"><strong>Juan David Serna</strong></ion-col>
+        <ion-col class="center-content" style="color: gray;" size="12">&#64;{{user?.username}}</ion-col>
+      </ion-row>
+      <div style="margin-top: 5px;">
+        <ion-row>
+
+          <ion-col style="display: flex; flex-direction: column; align-items: center;" size="4">
+
+            <ion-row style="width: 100%; display: block; text-align: center;">
+              <ion-col size="12"><strong>205.3k</strong></ion-col>
+            </ion-row>
+
+            <ion-row style="width: 100%; display: block; text-align: center;">
+              <ion-col size="12" style="color: gray;">Seguidores</ion-col>
+            </ion-row>
+            
+          </ion-col>
+      
+          <ion-col style="display: flex; flex-direction: column; align-items: center;" size="4">
+
+            <ion-row style="width: 100%; display: block; text-align: center;">
+              <ion-col size="12"><strong>1.4k</strong></ion-col>
+            </ion-row>
+
+            <ion-row style="width: 100%; display: block; text-align: center;">
+              <ion-col size="12" style="color: gray;">Seguidos</ion-col>
+            </ion-row>
+            
+          </ion-col>
+      
+          <ion-col style="display: flex; flex-direction: column; align-items: center;" size="4">
+            
+            <ion-row style="width: 100%; text-align: center; display: block;">
+              <ion-col size="12"><strong>185</strong></ion-col>
+            </ion-row>
+            
+            <ion-row style="width: 100%; text-align: center; display: block;">
+              <ion-col size="12" style="color: gray;">Momentos</ion-col>
+              <ion-col size="12" style="color: gray;">{{user?.uid}}</ion-col>
+            </ion-row>
+            
+          </ion-col>
+        </ion-row>
+      
+        
+      </div>
+    </ion-grid>
+  </div>
+
+  <div>
+    <ion-grid fixed>
+      <ion-row style="height: 100%;">
+        <ion-col style="height: 100%;" size="4">
+          <div class="image-container">
+            <ion-img [src]="user?.img"></ion-img>
+          </div>
+        </ion-col>
+        <ion-col style="height: 100%;" size="4">
+          <div class="image-container">
+            <ion-img [src]="user?.img"></ion-img>
+          </div>
+        </ion-col>
+        <ion-col style="height: 100%;" size="4">
+          <div class="image-container">
+            <ion-img [src]="user?.img"></ion-img>
+          </div>
+        </ion-col>
+        <ion-col style="height: 100%;" size="4">
+          <div class="image-container">
+            <ion-img [src]="user?.img"></ion-img>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+
+  <component-sign-out></component-sign-out>
+</ion-content>
