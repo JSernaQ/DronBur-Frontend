@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from '../../services/firebase.service';
 import { ApiService } from 'src/app/core/services/api.service';
 import { Router } from '@angular/router';
+import { ChatService } from 'src/app/modules/chat/services/chat.service';
 
 @Component({
   selector: 'component-sign-in',
@@ -14,14 +15,19 @@ export class SignInComponent {
   email!: string;
   password!: string;
 
-  constructor(private auth: FirebaseService, private apiServe: ApiService, private router: Router) { }
+  constructor(private auth: FirebaseService, private router: Router, private socketService: ChatService) { }
 
-  async login( ){
-    
+  async login() {
+
     const userCredentials = await this.auth.login(this.email, this.password)
-        
+
     if (userCredentials) {
-      this.router.navigate(['main/tabs/chats'])
+      const uid = userCredentials.user?.uid;
+
+      if (uid) {
+        this.socketService.initializeSocket(uid);
+        this.router.navigate(['main/tabs/chats'])
+      }
     }
 
   };
@@ -29,7 +35,7 @@ export class SignInComponent {
   async signInGoogle() {
 
     const userCredentials = await this.auth.signInGoogle();
-    
+
     if (userCredentials) {
       this.router.navigate(['main/tabs/chats'])
     }
@@ -39,8 +45,8 @@ export class SignInComponent {
   getCurrenUser() {
     const user = this.auth.getCurrentUser().subscribe()
     console.log(user);
-    
-    return user 
+
+    return user
   }
 
 }

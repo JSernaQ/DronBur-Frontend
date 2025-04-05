@@ -19,7 +19,7 @@ export class ProfilePage implements OnInit, OnDestroy {
   ngOnInit() {
     this.userSubscrition = this.afAuth.getCurrentUser().subscribe(user => {
       if (user) {
-        this.getUser(user?.uid)
+        this.getUser(user?.uidFB)
       }else {
         this.user = null
       }

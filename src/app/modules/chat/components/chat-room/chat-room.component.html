@@ -1,0 +1,43 @@
+<header>
+    <ion-icon slot="start" name="arrow-back-outline" (click)="goBack()"></ion-icon>
+    <ion-avatar>
+        <img *ngIf="chatInfo?.participants" [src]="chatInfo.participants[0]?._id === userInfo?._id 
+                    ? (chatInfo.participants[1]?.img || 'assets/default-avatar.png') 
+                    : (chatInfo.participants[0]?.img || 'assets/default-avatar.png')" alt="Chat avatar">
+    </ion-avatar>
+
+    <p *ngIf="chatInfo?.participants">
+        {{
+        chatInfo.participants[0]?._id === userInfo?._id
+        ? (chatInfo.participants[1]?.username)
+        : (chatInfo.participants[0]?.username)
+        }}
+    </p>
+
+</header>
+
+<div class="chat-container">
+    <div class="messages">
+
+        <div *ngFor="let message of messagesList" class="message" [ngClass]="{
+                    'received': (message?.sender?._id || message?.sender) !== userInfo?._id,
+                    'sent': (message?.sender?._id || message?.sender) === userInfo?._id
+                  }">
+            <p>{{ message?.content }}</p>
+        </div>
+
+
+        <!-- <div class="message received">
+            <p>Holaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+           <span class="time">10:45 AM</span> 
+        </div> -->
+
+    </div>
+    <div class="input">
+        <ion-input [(ngModel)]="content" type="text" placeholder="Escribe un mensaje..."></ion-input>
+        <!-- (keyup.enter)="sendMessage()" Send with enter key-->
+        <ion-button fill="clear" (click)="sendMessage()">
+            <ion-icon slot="end" name="send"></ion-icon>
+        </ion-button>
+    </div>
+</div>
