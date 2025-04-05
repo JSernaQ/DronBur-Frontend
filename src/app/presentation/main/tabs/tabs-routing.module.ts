@@ -10,35 +10,45 @@ const routes: Routes = [
     children: [
       {
         path: 'chats',
-        loadChildren: () => import('../chats/chats.module').then(m => m.ChatsPageModule), canActivate: [authGuard]
+        loadChildren: () => import('../chats/chats-list/chats-list.module').then(m => m.ChatsListPageModule),
+        canActivate: [authGuard]
+      },
+      {
+        path: 'chats/:id',
+        loadChildren: () => import('../chats/chat-room/chat-room.module').then(m => m.ChatRoomPageModule),
+        canActivate: [authGuard]
       },
       {
         path: 'feed',
-        loadChildren: () => import('../feed/feed.module').then(m => m.FeedPageModule), canActivate: [authGuard]
+        loadChildren: () => import('../feed/feed.module').then(m => m.FeedPageModule),
+        canActivate: [authGuard]
       },
       {
         path: 'moments',
-        loadChildren: () => import('../moments/moments.module').then(m => m.MomentsPageModule), canActivate: [authGuard]
+        loadChildren: () => import('../moments/moments.module').then(m => m.MomentsPageModule),
+        canActivate: [authGuard]
       },
       {
         path: 'profile',
-        loadChildren: () => import('../profile/profile.module').then(m => m.ProfilePageModule), canActivate: [authGuard]
+        loadChildren: () => import('../profile/profile.module').then(m => m.ProfilePageModule),
+        canActivate: [authGuard]
       },
       {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: '/tabs/chats',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
+    redirectTo: '/tabs/chats',
     pathMatch: 'full'
   }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
 })
 export class TabsPageRoutingModule {}

@@ -1,2 +1,8 @@
 // For information on how to create your own theme, please see:
 // http://ionicframework.com/docs/theming/
+
+/* Aplica la fuente a toda la app */
+:root {
+    --ion-font-family: 'Inter', sans-serif;
+  }
+  

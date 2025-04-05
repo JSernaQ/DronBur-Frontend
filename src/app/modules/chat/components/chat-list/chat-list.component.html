@@ -1,0 +1,25 @@
+<ion-content>
+
+  <!-- Spinner de carga -->
+  <ion-spinner *ngIf="isLoading" name="crescent" class="loading-spinner"></ion-spinner>
+
+  <!-- Mensaje cuando no hay chats -->
+  <div *ngIf="!isLoading && chats.length === 0" class="no-chats">
+    <ion-icon name="chatbubbles-outline"></ion-icon>
+    <p>No tienes conversaciones aún</p>
+  </div>
+
+  <!-- Lista de chats -->
+  <ion-list *ngIf="!isLoading && chats.length > 0">
+    <ion-item *ngFor="let chat of chats" (click)="openChat(chat)">
+      <div  style="width: 60px; height: 60px; margin-right: 10px;">
+        <img style="height: 100%; width: 100%; border-radius: 100px; object-fit: cover;" [src]="user?._id === chat.participants[0]?._id ? chat.participants[1].img : chat.participants[0].img">
+      </div>
+      <ion-label>
+        <h2>{{ chat.isGroup ? chat.groupName : chat.participants[1].username }}</h2>
+        <h6>Último mensaje...</h6> <!-- Pendiente -->
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
