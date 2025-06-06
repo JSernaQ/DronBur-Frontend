@@ -12,6 +12,8 @@ import { FirebaseService } from 'src/app/modules/auth/services/firebase.service'
 export class ProfilePage implements OnInit, OnDestroy {
 
   user !: any;
+  followed: any;
+  followers: any;
   userSubscrition !: Subscription;
 
   constructor(private afAuth: FirebaseService, private apiServe: ApiService) { }
@@ -35,6 +37,8 @@ export class ProfilePage implements OnInit, OnDestroy {
   async getUser(uid: String) {
     try {
       this.user = await this.apiServe.getUser(uid);
+      this.followed = await this.user.followed.length;
+      this.followers = await this.user.followers.length;
       console.log('Usuario obtenido:', this.user);
 
     } catch (error) {

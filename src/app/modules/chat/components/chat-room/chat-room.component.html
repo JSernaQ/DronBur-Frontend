@@ -2,8 +2,8 @@
     <ion-icon slot="start" name="arrow-back-outline" (click)="goBack()"></ion-icon>
     <ion-avatar>
         <img *ngIf="chatInfo?.participants" [src]="chatInfo.participants[0]?._id === userInfo?._id 
-                    ? (chatInfo.participants[1]?.img || 'assets/default-avatar.png') 
-                    : (chatInfo.participants[0]?.img || 'assets/default-avatar.png')" alt="Chat avatar">
+                    ? (chatInfo.participants[1]?.img || 'assets/default-avatar.webp') 
+                    : (chatInfo.participants[0]?.img || 'assets/default-avatar.webp')" alt="Chat avatar">
     </ion-avatar>
 
     <p *ngIf="chatInfo?.participants">

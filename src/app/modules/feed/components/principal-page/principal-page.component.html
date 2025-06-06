@@ -1,0 +1,21 @@
+<ion-content>
+    <div class="post-container">
+        <ion-list>
+            <ng-container class="post-content" *ngFor="let p of postsList">
+                <ion-item lines="full">
+                    <ion-avatar slot="start">
+                        <img [src]="p.user.img || 'assets/default-avatar.png'" />
+                    </ion-avatar>
+                    <ion-label>
+                        <h2>{{ p.user.username }}</h2>
+                        <p>{{ p.content }}</p>
+                    </ion-label>
+                </ion-item>
+
+                <div *ngIf="p.images && p.images.length" class="post-images">
+                    <ion-img *ngFor="let img of p.images" [src]="img"></ion-img>
+                </div>
+            </ng-container>
+        </ion-list>
+    </div>
+</ion-content>

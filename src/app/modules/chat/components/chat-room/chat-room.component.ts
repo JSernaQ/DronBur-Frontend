@@ -39,8 +39,6 @@ export class ChatRoomComponent implements OnInit, OnDestroy {
 
     this.chatInfoSubscription = this.apiService.getChatInfo(this.chatId).subscribe(
       (res: any) => {
-        console.log(res.infoChat);
-        
         this.chatInfo = res.infoChat;
       }
     );
@@ -58,7 +56,6 @@ export class ChatRoomComponent implements OnInit, OnDestroy {
     
     this.newMessagesSubscription = this.chatService.listenNewMessages().subscribe(
       (newMessage) => {
-        console.log(newMessage);
         if (newMessage && newMessage.chatId == this.chatId) {
           const sender = typeof newMessage.sender === 'string'
           ? { _id: newMessage.sender }

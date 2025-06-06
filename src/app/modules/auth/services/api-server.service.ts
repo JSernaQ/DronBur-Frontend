@@ -10,19 +10,26 @@ export class ApiServerService {
 
   constructor(private http: HttpClient) { }
 
-  async createUser(user: any) {
-    const data = this.http.post(`${environments.apiServerUrl}/user/createUser`, user);
-    return data
+  createUser(user: any) {
+    return this.http.post(`${environments.apiServerUrl}/user/createUser`, user);
   }
 
   getUser(uid: any): Observable<any> {
-    const data = this.http.get(`${environments.apiServerUrl}/user/${uid}`)
-    return data
+    return this.http.get(`${environments.apiServerUrl}/user/${uid}`);
   }
 
   getChatInfo(chatId: any): Observable<any> {
-    const data = this.http.get(`${environments.apiServerUrl}/chat/individual/${chatId}`)
-    return data
+    return this.http.get(`${environments.apiServerUrl}/chat/individual/${chatId}`);
+  }
+
+  getPostsByUser(info: any[]): Observable<any> {
+    return this.http.post(`${environments.apiServerUrl}/post//get-posts-by-user/`, info);
+  }
+
+  getFriendsPosts(friendsList: any[]): Observable<any> {
+    return this.http.post(`${environments.apiServerUrl}/post/get-friends-posts/`, {
+      uidList: friendsList
+    });
   }
 
 }

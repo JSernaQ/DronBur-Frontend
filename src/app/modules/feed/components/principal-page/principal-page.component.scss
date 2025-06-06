@@ -1,0 +1,11 @@
+.post-images {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 14px;
+
+    ion-img {
+        margin-bottom: 10px;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+}
