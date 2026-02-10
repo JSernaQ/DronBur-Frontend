@@ -114,7 +114,7 @@ export class FirebaseService {
     try {
       const auth = getAuth();
       signOut(auth);
-      await Preferences.remove({ key: 'user' })
+      await Preferences.clear();
       this.router.navigate(['/']);
     } catch (error) {
       console.error('Error al cerrar sesión:', error);
